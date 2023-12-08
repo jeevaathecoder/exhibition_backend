@@ -1,23 +1,21 @@
 package com.onlineexhibition.backend.controllers;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.onlineexhibition.backend.models.Stalls;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import com.onlineexhibition.backend.services.StallService;
 
-
+import java.net.URI;
+import java.util.List;
 
 @RestController
-@RequestMapping("/stall")
+@RequestMapping("/stalls")
 public class StallController {
-      
+
+    @Autowired
+    private StallService stallService;
     @Autowired
     private StallService theStallService;
 
@@ -25,4 +23,11 @@ public class StallController {
     public List<Stalls> findStallByGivenId(@PathVariable long id){
         return theStallService.findGivenStallById(id);
     }
+    @PostMapping("/add")
+    public ResponseEntity<Stalls> addStall(@RequestBody Stalls stall) {
+        Stalls newStall = stallService.addStall(stall);
+        return ResponseEntity.created(URI.create("/stall/" + newStall.getId())).body(newStall);
+    }
+
+
 }

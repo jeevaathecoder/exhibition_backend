@@ -1,25 +1,17 @@
-//package com.onlineexhibition.backend;
-//
-//import com.onlineexhibition.backend.models.User;
-//import com.onlineexhibition.backend.models.UserRole;
-//import com.onlineexhibition.backend.repository.UserRepository;
-//import com.onlineexhibition.backend.repository.UserRoleRepository;
-//import org.springframework.boot.CommandLineRunner;
-//import org.springframework.boot.SpringApplication;
-//import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.security.crypto.password.PasswordEncoder;
-//
-//import java.util.HashSet;
-//import java.util.Set;
-//
-//@SpringBootApplication
-//public class BackendApplication {
-//
-//	public static void main(String[] args) {
-//		SpringApplication.run(BackendApplication.class, args);
-//	}
-//
+package com.onlineexhibition.backend;
+
+
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class BackendApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BackendApplication.class, args);
+	}
+
 //	@Bean
 //	CommandLineRunner run(UserRoleRepository userRoleRepository, UserRepository userRepository, PasswordEncoder passwordEncode){
 //		return args ->{
@@ -35,4 +27,4 @@
 //			userRepository.save(admin);
 //		};
 //	}
-//}
+}

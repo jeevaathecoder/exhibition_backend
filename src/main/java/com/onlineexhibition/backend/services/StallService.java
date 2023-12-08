@@ -20,4 +20,8 @@ public class StallService {
     public List<Stalls> findGivenStallById(long id){
         return theStallRepository.findStallById(id);
     }
+
+    public Stalls addStall(Stalls stall) {
+        return theStallRepository.save(stall);
+    }
 }
