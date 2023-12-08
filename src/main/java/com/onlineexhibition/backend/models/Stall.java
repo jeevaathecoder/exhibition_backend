@@ -1,10 +1,10 @@
 package com.onlineexhibition.backend.models;
 
-import com.onlineexhibition.backend.services.StallService;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
+
 
 @Entity
 @Table(name ="stalls")
