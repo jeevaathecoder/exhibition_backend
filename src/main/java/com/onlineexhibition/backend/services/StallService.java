@@ -1,13 +1,23 @@
 package com.onlineexhibition.backend.services;
 
-import java.util.Optional;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.onlineexhibition.backend.models.Stalls;
+import com.onlineexhibition.backend.repository.StallRepository;
 
 
 
-import com.onlineexhibition.backend.models.Stall;
+@Service
+public class StallService {
+    @Autowired
+    private StallRepository theStallRepository;
 
-
-public interface StallService {
-    
-    Optional<Stall> getStallById(Long id);
+    public List<Stalls> findGivenStallById(long id){
+        return theStallRepository.findStallById(id);
+    }
 }
