@@ -1,30 +1,28 @@
 package com.onlineexhibition.backend.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-
-import com.onlineexhibition.backend.models.Stall;
+import com.onlineexhibition.backend.models.Stalls;
 import com.onlineexhibition.backend.services.StallService;
 
-@Controller
-@RequestMapping("/api")
+
+
+@RestController
+@RequestMapping("/stall")
 public class StallController {
-
+      
     @Autowired
-    private StallService stallService;
-    
+    private StallService theStallService;
 
-     @GetMapping("/stall/{id}")
-        public ResponseEntity<Stall> getStallById(@PathVariable Long id) {
-        return stallService.getStallById(id)
-                .map(stall -> ResponseEntity.ok().body(stall))
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    
-
+    @GetMapping("/{id}")
+    public List<Stalls> findStallByGivenId(@PathVariable long id){
+        return theStallService.findGivenStallById(id);
     }
 }
