@@ -1,6 +1,6 @@
 package com.onlineexhibition.backend.controllers;
 
-import com.onlineexhibition.backend.models.Stalls;
+import com.onlineexhibition.backend.entity.Stalls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +19,13 @@ public class StallController {
    private StallService theStallService;
 
    @GetMapping("/{id}")
-   public List<Stalls> findStallByGivenId(@PathVariable long id) {
+   public Stalls findStallByGivenId(@PathVariable long id) {
       return theStallService.findGivenStallById(id);
+   }
+
+   @GetMapping("/")
+   public List<Stalls> findAllStall() {
+      return theStallService.getAllStalls();
    }
 
    @PostMapping("/add")
