@@ -13,8 +13,7 @@ import java.util.List;
 @RequestMapping("/api/stalls")
 public class StallController {
 
-   @Autowired
-   private StallService stallService;
+  
    @Autowired
    private StallService theStallService;
 
@@ -30,7 +29,7 @@ public class StallController {
 
    @PostMapping("/add")
    public ResponseEntity<Stalls> addStall(@RequestBody Stalls stall) {
-      Stalls newStall = stallService.addStall(stall);
+      Stalls newStall = theStallService.addStall(stall);
       return ResponseEntity.created(URI.create("/stall/" + newStall.getId()))
               .body(newStall);
    }
@@ -38,7 +37,7 @@ public class StallController {
    @PutMapping("/edit")
      public ResponseEntity<Stalls> editStall(@RequestBody Stalls stall){
          try{
-            Stalls editStall = stallService.editTheStall(stall);
+            Stalls editStall = theStallService.editTheStall(stall);
             return ResponseEntity.ok(editStall);
          } catch (IllegalArgumentException e){
             return ResponseEntity.notFound().build();
