@@ -35,5 +35,16 @@ public class StallController {
               .body(newStall);
    }
 
+   @PutMapping("/edit")
+     public ResponseEntity<Stalls> editStall(@RequestBody Stalls stall){
+         try{
+            Stalls editStall = stallService.editTheStall(stall);
+            return ResponseEntity.ok(editStall);
+         } catch (IllegalArgumentException e){
+            return ResponseEntity.notFound().build();
+         }
+     }
+   
+
 
 }
