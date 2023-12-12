@@ -28,4 +28,14 @@ public class StallService {
     public Stalls addStall(Stalls stall) {
         return theStallRepository.save(stall);
     }
+    
+   public Stalls editTheStall(Stalls stall){
+     if(theStallRepository.existsById(stall.getId())){
+              return theStallRepository.save(stall);
+     } else{
+        throw new IllegalArgumentException("Stall with ID " + stall.getId() + " not found");
+      }
+   }
+
+
 }
